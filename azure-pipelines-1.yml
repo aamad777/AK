@@ -1,0 +1,34 @@
+# Node.js
+# Build a general Node.js project with npm.
+
+trigger:
+  - main  # Run pipeline on changes to the main branch
+
+pool:
+  vmImage: 'ubuntu-latest'  # Use Ubuntu as the environment
+
+steps:
+  # Step 1: Install Node.js
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '20.x'  # Ensure Node.js version matches your project
+    displayName: 'Install Node.js'
+
+  # Step 2: Install dependencies
+  - script: |
+      npm install
+    displayName: 'Install dependencies'
+
+  # Step 3: Run tests
+  - script: |
+      npm test
+    displayName: 'Run tests'
+
+  # Optional: Step 4: Deployment placeholder (if deploying later)
+  - script: echo "Deployment step here"
+    displayName: 'Deploy the application'
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'SOCARTRADING Test'
+    appName: 'aktest777'
+    package: '$(System.DefaultWorkingDirectory)'
