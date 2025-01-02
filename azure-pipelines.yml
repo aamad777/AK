@@ -27,7 +27,7 @@ steps:
   # Step 4: Deploy the application
   - task: AzureWebApp@1
     inputs:
-      azureSubscription: 'AKtest'
+      azureSubscription: 'SOCARTRADING Test'
       appName: 'aktest777'
       package: '$(System.DefaultWorkingDirectory)'
     displayName: 'Deploy the application'
