@@ -24,6 +24,10 @@ steps:
       npm test
     displayName: 'Run tests'
 
-  # Optional: Step 4: Deployment placeholder (if deploying later)
-  - script: echo "Deployment step here"
+  # Step 4: Deploy the application
+  - task: AzureWebApp@1
+    inputs:
+      azureSubscription: 'AKtest'
+      appName: 'aktest777'
+      package: '$(System.DefaultWorkingDirectory)'
     displayName: 'Deploy the application'
